@@ -15,7 +15,7 @@ Developed a prototype of "Amazon Web Store" RESTful services using Node.js and E
 It uses NodeJS framework and demonstrates RESTFul web services while communicating with the server. The application also used front-end framework called Bootstrap and jQuery. 
 
 Processing Logic :
-===========
+-----------
 * All communication between the client and server takes place using restful calls. 
 * While starting server fetches all the data related to products and categories from the database and stores it into cache. So, when the user sign in and he is redirected to catalog page it fetches the list of categories and products from this cache and displays it to the user. 
 * When the admin user add a new product or category it is inserted into the database and also they are updated in cache.
@@ -23,7 +23,7 @@ Processing Logic :
 * All the data related to shopping cart is maintained in database and every time any operation happens on this data the values are updated in database.
 
 Tools
-===========
+-----------
 Created with Nodeclipse (Eclipse Marketplace, site)
 
 Nodeclipse is free open-source project that grows with your contributions.
