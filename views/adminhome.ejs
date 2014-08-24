@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <title>Admin View</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  </head>
+  <body>
+  		<header>
+ 	 		<div class="header-top">
+        		<div class="container">
+      				<div class="welcome_name pull-left">
+        				<h3>Admin View</h3>
+        			</div>
+      				<div class="pull-right">
+        				<nav class="navbar clear-right pull-right">
+          					<ul class="nav nav-pills">      
+				                <li>
+				                  	<a href="/addcatalogs" title="home" class="active">Home</a>
+				                </li>
+				               
+			                  	<li>
+			                    	<a href="/logout" title="logout" class="">Logout</a>
+			                	</li>
+          					</ul>
+        				</nav>
+      				</div>
+    			</div>
+  			</div>
+     	</header>
+     	
+     	<div class="bs-example">
+		    <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+		      <li class="active"><a href="/addcatalogs">Catalogs</a></li>			      
+		      <li><a href="/addproducts/">Products</a></li>
+		    </ul>
+		</div>
+		
+		
+		<form action="/addcatalogs" method="post" class="addCatalog">
+			<div class="form-group  addCatalogDiv pull-left">
+	              <label class="inputCatalog" class="col-sm-2 control-label pull-left" style="margin-left: 15px;">Enter new Catalog</label>
+	              <div class="col-sm-10">
+	                  <input type="text" class="form-control" name="inputCatalogName" id="inputCatalogName" placeholder="New Catalog">
+	              </div>
+			</div>
+			
+		      <div class="form-group">
+		           <div class="col-sm-offset-2 col-sm-10">
+		               <button type="submit" class="btn btn-primary">Add Catalog</button>
+		           </div>
+		      </div>
+		      <label class="message"></label>
+		      <script>
+		      	<% if(message=="0") 
+		      	{ %>
+		      		jQuery(".message").text("Catalog already exists");
+		      	<% 
+		      	}
+		      	else if(message=="1") 
+		      	{ %>
+		      		jQuery(".message").text("Catalog added successfully");
+		      	<% 
+		      	} %>
+		      </script>
+		 </form>
+		
+</html>

@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <title>My Cart</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    
+   
+  </head>
+  <body>
+            <header>
+                <div class="header-top">
+                    <div class="container">
+                        <div class="welcome_name pull-left">
+                            <h4>My Cart</h4>
+                        </div>
+                        <div class="pull-right">
+                            <nav class="navbar clear-right pull-right">
+                                <ul class="nav nav-pills">      
+                                    <li>
+                                        <a href="/home" title="home" class="active">Home</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/myAccount" title="My Account" class="">My Account</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/myCart" title="My Cart" class="">My Cart</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/logout" title="logout" class="">Logout</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>   
+             
+           <section class="adjust container">
+               
+                    <table class="table table-striped">                         
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Product Count</th>
+                                <th>Amount</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <% for(var i in myCart) 
+                            { %>
+                                <tr>
+                                <th><%= myCart[i].productName %></th>
+                                <th><%= myCart[i].productCount %></th>
+                                <th><%= myCart[i].cost %></th>
+                                <th>                                	
+                                		<a href="/deleteFromCart/<%= myCart[i].productName %>">Remove <%= myCart[i].productName %></a>   
+                                </th>	
+                                </tr>
+                            <% } %>
+                        </tbody>                        
+                        
+                        <tfoot>
+                            <td></td>
+                            <td class="bold">Total</td>
+                            <td class="bold total"></td>
+                            <td></td>
+                         </tfoot>
+                         
+                         <% 
+                            var total=0;
+                            for(var i in myCart) 
+                            { 
+                                total = total + myCart[i].cost;
+                                
+                            } 
+                        %>
+                        <script>
+                            jQuery(".total").text(<%= total %>);
+                        </script>
+                        
+                    </table>
+                   
+                <form class="container form-horizontal" action="/checkout" method="post"> 
+                    <label class="pull-left bold">Please enter your credit card number</label>
+                    <input type="text" id="creditCard" name="creditCard" class="creditCard pull-left" style="clear:both">
+                    <button type="submit" id="pay" name="pay" class="btn pull-left" style="margin-left: 10px;">Pay</button>
+                    <label class="creditCardError"></label>
+                </form>
+            </section>
+
+             <script>
+                jQuery(document).ready(function()
+                {                   
+                    jQuery("#pay").click(function(){
+                        var creditNumber = jQuery("#creditCard").val();
+                        var length = creditNumber.length;
+                        if(length!=16)
+                        {
+                            jQuery(".creditCardError").text("Invalid Credit card number");
+                            return false;
+                        }
+                        else
+                        {
+                            jQuery(".creditCardError").text("");
+                        }
+                    });                     
+                });
+            </script> 
+ </body>
+</html>

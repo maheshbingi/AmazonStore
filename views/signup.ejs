@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <title>Sign Up</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  </head>
+  <body>
+  <form action="/signin" method="get">
+    <!-- This panel is for login -->
+    <input type="hidden" name="action" value="signup"/>
+    
+    <div id='if-part1' style='visibility: hidden'>User already exists</div>	
+    
+    <div class="panel panel-primary signupPage">
+      <!-- Default panel contents -->
+        <div class="panel-heading">Sign Up</div>
+        <div class="panel-body">
+           <form class="form-horizontal" role="form">
+                   <div class="form-group">
+                      <label for="FirstName" class="col-sm-2 control-label">First Name</label>
+                      <div class="col-sm-10">
+                          <input type="text" class="form-control" name="inputFirstName" id="inputFirstName" placeholder="First Name">
+                      </div>
+                   </div>
+                    <div class="form-group">
+                      <label for="LastName" class="col-sm-2 control-label">Last Name</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="inputLastName" id="inputLastName" placeholder="Last Name">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="Emal ID" class="col-sm-2 control-label">Email Id</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" name="inputEmailID" id="inputEmailID" placeholder="Email ID">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="Password" class="col-sm-2 control-label">Password</label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" name="inputPassword" id="inputPassword" placeholder="Password">
+                      </div>
+                    </div>                                        
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                      </div>
+                    </div>
+              </form>
+        </div>
+  </div>
+ </form>  
+ </body>
+
+<script>
+    var node;
+    var flag= <%=isuser%>;
+    
+    if(flag) {
+        node = document.getElementById('if-part');
+    }
+    else {
+        node = document.getElementById('else-part');
+    }
+    node.style.visibility = 'visible';
+</script>
+
+
+</html>
