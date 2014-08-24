@@ -7,12 +7,26 @@ Developed a prototype of "Amazon Web Store" RESTful services using Node.js and E
 * Functionality such as signUp, signIn, SignOut
 * Admin can add catalog and products
 * User can add & remove items from cart
-* Performing CURD operation.
+* Performing CRUD operation.
 * Implementing connection pooling
 * Implementing Cache
 * Validation
 
 It uses NodeJS framework and demonstrates RESTFul web services while communicating with the server. The application also used front-end framework called Bootstrap and jQuery. 
+
+System Design
+===========
+This project provides the basic functionalities demonstrated by Amazon website listed above. It follows MVC architecture so that the business logic, presentation and database logic are in different places and there is less coupling between layers.
+
+Operating Environment
+-----------
+This project uses node.js platform for it's development and uses express framework for working with different functionalities provided by node.js. Also, it uses restful calls for client-server interaction.
+
+Files and Database Design
+-----------
+The project maintains a separate router and view files for all of its modules at application level for e.g. signIn, signUp, shoppingCart etc. For an instance lets consider shoppingCart module this will contain a shoppingCart.ejs for it's view and shopping.js file as it's router. Mysql.js performs connection pooling and execution of the database queries.
+
+Database Design : Database contains four tables as USER, CATEGORY, PRODUCT and SHOPPING_CART. They share references to each other accordingly.
 
 Processing Logic :
 -----------
